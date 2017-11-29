@@ -1,0 +1,48 @@
+body {
+    font-family:monospace;
+    font-size:9pt;
+    padding:10px;
+    line-height:25px;
+}
+header {
+    height:130px;
+    border-bottom:1px solid #000;
+    border-style: inset;
+    margin:20px 0;
+    background:rgb(208, 229, 230);
+    position:relative;
+}
+header h3 a {
+    text-decoration:none;
+    padding:1em 10px;
+    font-size:20pt;
+    position:absolute;
+    right:0;
+}
+section {
+    overflow:auto;
+    background:#eee;
+    box-shadow:2px 2px 2px rgb(185, 185, 185);
+    padding:5px;
+    margin:20px 0;
+}
+a {
+    color:#000;
+}
+
+ul {
+    position:absolute;
+    top:0;
+}
+.story {
+    display:flex;
+    flex-direction: row;
+    margin:5px;
+    width:80%;
+
+}
+img {
+    margin:0 10px;
+    width:100px;
+    height:100px;
+}
