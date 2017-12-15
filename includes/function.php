@@ -13,7 +13,6 @@ function curlup($url) {
     return $result;
 }
 
-
 function section($string) {
     $url = 'https://www.reddit.com/r/'.$string.'.json?limit=11';
     $data = curlup($url);
@@ -25,10 +24,8 @@ function section($string) {
 
     foreach ($children as $child ) {
         $div .= '<div class=\'story\'>';
-        if (!($child->data->thumbnail == 'self' || $child->data->thumbnail == 'nsfw')) {
+        if (!($child->data->thumbnail == 'self' || $child->data->thumbnail == 'nsfw' || $child->data->thumbnail == 'default')) {
         $div .= '<img src=\''.$child->data->thumbnail.'\'>';
-        } else if ($child->data->thumbnail == 'default') {
-        $div .= '<img src=\'./images/noimage.png\' title=\'No Image\'>';
         } else {
         $div .= '<img src=\'./images/noimage.png\' title=\'No Image\'>'; }
         $div .= '<h3><a href=\''.$child->data->url.'\' target=\'_blank\'>'.$child->data->title.'</a></h3></div>';
@@ -53,10 +50,5 @@ if (basename($_SERVER['PHP_SELF']) == 'videos.php') {
 
         section('funny');
 }
-
-
-
-
-
 
 ?>
