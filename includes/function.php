@@ -18,37 +18,40 @@ function section($string) {
     $url = 'https://www.reddit.com/r/'.$string.'.json?limit=11';
     $data = curlup($url);
 
-    // var_dump(json_decode($data));
     $data = json_decode($data);
-
     $children = $data->data->children;
 
-
     $div = '';
+
     foreach ($children as $child ) {
         $div .= '<div class=\'story\'>';
-        if ($child->data->thumbnail != 'self') {
+        if (!($child->data->thumbnail == 'self' || $child->data->thumbnail == 'nsfw')) {
         $div .= '<img src=\''.$child->data->thumbnail.'\'>';
         } else if ($child->data->thumbnail == 'default') {
-        $div .= '<img src=\'noimage.png\' title=\'No Image\'>';
+        $div .= '<img src=\'./images/noimage.png\' title=\'No Image\'>';
         } else {
-        $div .= '<img src=\'noimage.png\' title=\'No Image\'>'; }
+        $div .= '<img src=\'./images/noimage.png\' title=\'No Image\'>'; }
         $div .= '<h3><a href=\''.$child->data->url.'\' target=\'_blank\'>'.$child->data->title.'</a></h3></div>';
     }  
     $div .= '</div>';
     echo $div;
 }
 
-
-
 if (basename($_SERVER['PHP_SELF']) == 'videos.php') {
-    section('videos');
+
+        section('videos');
+
 } else if (basename($_SERVER['PHP_SELF']) == 'pics.php') {
-    section('pics');
-} else if (basename($_SERVER['PHP_SELF']) == 'politics.php') {
-    section('politics');
+
+        section('pics');
+
+} else if (basename($_SERVER['PHP_SELF']) == 'index.php') {
+
+        section('politics');
+
 } else if (basename($_SERVER['PHP_SELF']) == 'funny.php') {
-    section('funny');
+
+        section('funny');
 }
 
 
